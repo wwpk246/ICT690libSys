@@ -25,4 +25,8 @@ their own line, followed by the code (or any kind of
 pre-formatted text), followed by three closing backticks on
 a their own line.
 
+1. This is the **FIRST** time I've used the markdown language directly 
+via the information from the reference sheet.
+I usually use a text editor such as Sublime for most of the markup I need to perform.
+
 ![hope this works](https://github.com/wwpk246/ICT690libSys/blob/main/fine.jpeg?raw=true)
