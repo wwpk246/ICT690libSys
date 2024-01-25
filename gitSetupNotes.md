@@ -18,6 +18,8 @@ In order to create a new repository head to +, then new repo
 > and I learn. --Not Benjamin Franklin and probably Xun
 > Kuang
 
+~~I liked the quote so I left it in.  Thought it would be a nice reminder of the example of how certain things work.~~
+
 And finally, a code block starts with three backticks on
 their own line, followed by the code (or any kind of
 pre-formatted text), followed by three closing backticks on
