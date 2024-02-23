@@ -1,4 +1,4 @@
-##H1 Sudo
+## Sudo
 
 
 1.`*sudo apt update*` //runs the ubuntu updater to check for updates
@@ -18,4 +18,4 @@
 7.`*sudo apt autoremove "name"*`  //removes the software package and the dependent packages that were applied with it
 
 
-##H1 Search
+## Search
