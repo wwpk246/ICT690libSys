@@ -18,4 +18,5 @@
 7.`*sudo apt autoremove "name"*`  //removes the software package and the dependent packages that were applied with it
 
 
+
 ## Search
