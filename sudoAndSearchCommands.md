@@ -20,3 +20,25 @@
 
 
 ## Search
+
+
+**yaz-client** //allows to interact with library system
+
+`apt search yaz`  //searches for the program
+`sudo apt install yaz`  //installs the yaz software
+
+From main command line view, type `yaz-client` which will load `Z>`
+
+Open the library search connection `open saalck-uky.alma.exlibrisgroup.com:1921/01SAA_UKY`
+
+`find @and @attr 1=4 "information" @attr 1=21 "library science"`  
+`find` is the command that sends a search request
+`@and` is the operator signifying a Boolean AND search of multiple attributes
+`@attr 1=4` instructs the query to search for the term in the Title
+`"information"` is the first search term for the Title search
+`@attr 1=21` instructs the query to search for the term in the Subject-heading
+`"library science"` is the second search term for the subject heading search  
+
+`show 1`  //shows the first record in the referenced search
+
+
