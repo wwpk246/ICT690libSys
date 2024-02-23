@@ -1,4 +1,6 @@
-##H2 Sudo
+##H1 Sudo
+
+
 '*sudo apt update*' //runs the ubuntu updater to check for updates
 '*sudo apt upgrade*'  //applies available updates
 '*sudo reboot*'  //reboots vm machine in case of a kernel update - still unclear how to tell this was applied
@@ -12,4 +14,4 @@
 '*sudo apt autoremove "name"*'  //removes the software package and the dependent packages that were applied with it
 
 
-##H2 Search
+##H1 Search
