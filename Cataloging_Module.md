@@ -1,6 +1,6 @@
 **Created the directory for the cataloging html and php:**
-cd /var/www/html
-sudo mkdir cataloging
+ -cd /var/www/html
+ -sudo mkdir cataloging
 
 
 **Set the user name for the catalog in apache:**
@@ -13,3 +13,5 @@ sudo mkdir cataloging
 cataloging site
 author, book title, publisher, copyright
 - if refresh is hit or forn submission duplicates then an identical entry is made to the data
+still trying to figure out where this entry got stored so I can delete the duplicate
+
