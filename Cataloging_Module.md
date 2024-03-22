@@ -23,6 +23,7 @@ Figured out how to delete row from database, **mysql> DELETE FROM books WHERE id
 
 
 **CLASS NOTES**
+
 Creating a Bare Bones Cataloging Module
 If you have worked with an integrated library system (or took my electronic resource management class), then you know that an OPAC is simply one module out of several that makeup an integrated library system (ILS). Integrated library systems, and the newer library service platforms (LSP), provide other modules for other types of work. These include modules for acquisitions, authority files, circulation, course reserves, patron management, and more. In the prior section, we created one of those modules: a bare bones OPAC. In this section, we are going to create a bare bones cataloging module in the same kind of way.
 
