@@ -60,7 +60,9 @@ Overall I'm not super comfy with it yet but that's probably due to my over relia
 54
 
 **___CLASS NOTES___**
+
 Text editors
+
 As we learn more about how to work on the command line, we will acquire the need to write in plain text or edit configuration files. Most configuration files for Linux applications exist in the /etc directory, and are regular text files. For example, later in the semester we will install the Apache Web Server, and we will need to edit Apache's configuration files in the process.
 
 In order to edit and save text files, we need a text editor. Programmers use text editors to write programs, but because programmers often work in graphical user environments, they may often use graphical text editors or graphical Integrated Development Environments (IDEs). It might be that if you work in systems librarianship, that you will often use a graphical text editor, but knowing something about how to use command line-based editors can be helpful.
