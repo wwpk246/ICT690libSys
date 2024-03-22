@@ -18,3 +18,4 @@ author, book title, publisher, copyright
 - if refresh is hit or forn submission duplicates then an identical entry is made to the data
 still trying to figure out where this entry got stored so I can delete the duplicate
 
+Figured out how to delete row from database, **mysql> DELETE FROM books WHERE id='12';**
