@@ -8,7 +8,7 @@
 
  -sudo htpasswd -c /etc/apache2/.htpasswd 
  -user = libcat
- -pw = test1234
+ -pw = ********
 
 
 **http://34.23.173.5/cataloging/**
