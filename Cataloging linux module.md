@@ -94,9 +94,9 @@ From the output, we can see that the www-apache user's home directory is /var/ww
 -limit file permissions for the libcat user:
 "Change the group ownership of /var/www/html to www-data:
 sudo chown :www-data /var/www/html
-Set the setgid bit on /var/www/html. This command makes it so that any new files and directories created within /var/www/html will inherit the group ownership of the parent directory (www-data, in this case). While this ensures that group ownership is inherited, the user ownership of new files will still be the user that creates the files. In our case, since we use sudo to work in this directory, that means that the user owner for subsequent files and directories will be the Linux root user.
+Set the setgid bit on /var/www/html. This command makes it so that any new files and directories created within /var/www/html will inherit the group ownership of the parent directory (www-data, in this case). While this ensures that group ownership is inherited, the user ownership of new files will still be the user that creates the files. In our case, since we use sudo to work in this directory, that means that the user owner for subsequent files and directories will be the Linux root user."
 
-sudo chmod -R g+s /var/www/html"
+sudo chmod -R g+s /var/www/html
 -add entries to the catalog module
 
 
