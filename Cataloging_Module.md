@@ -24,30 +24,24 @@ Figured out how to delete row from database, **mysql> DELETE FROM books WHERE id
 
 ---**CLASS NOTES**---
 
-Creating a Bare Bones Cataloging Module
-If you have worked with an integrated library system (or took my electronic resource management class), then you know that an OPAC is simply one module out of several that makeup an integrated library system (ILS). Integrated library systems, and the newer library service platforms (LSP), provide other modules for other types of work. These include modules for acquisitions, authority files, circulation, course reserves, patron management, and more. In the prior section, we created one of those modules: a bare bones OPAC. In this section, we are going to create a bare bones cataloging module in the same kind of way.
+Cataloging Module:
 
-Up until this point, you have been adding records to your OPAC using the MySQL command interface. But unless you are a full time database administrator or programmer, it's unlikely that you would add data to your system via that interface. Instead you would use an application via a fancy graphical user interface, i.e., integrated library system. The reason we started off with MySQL is not because you would necessarily use this interface on a daily basis. Rather, it's because I want you to understand the foundations of these technologies.
 
-Creating the HTML Page and a PHP Cataloging Page
-Like in the last exercise, the first thing we do is create a basic HTML page that contains a form for entering our bibliographic data. Again, our cataloging module will not be real world like. The goal here is to build an intuition about how these technologies work and to provide some grounding if you do want to pursue a more technical path.
-
-The form that we will create needs to mirror the data structure in the books table that we created in our prior lesson. That means it will only contain four fields:
-
+-contain four fields similar to books table in MYSQL:
 author
 title
 publisher
 copyright
-I'll call this page index.html. I'll create a new directory for this module:
 
+-create new directory:
 cd /var/www/html
 sudo mkdir cataloging
-Then I'll use nano to create the index.html file and add the content:
 
+-create index.html and add content:
 cd cataloging
 sudo nano index.html
-In index.html, we add the following content:
 
+-add below text:
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,12 +70,9 @@ In index.html, we add the following content:
     </form>
 </body>
 </html>
-PHP Insert Script
-The index.html page will provide a user interface, that is, a form, for entering our bibliographic data. However, the PHP script is needed to communicate and add the data from our form into our MySQL database and books table.
 
-Also, just as the HTML form has to match the data structure of the books table, the PHP script also needs to match the form from the HTML page and the data structure in the books table.
-
-Here is the PHP script, which I call insert.php, which you'll notice was referenced in the HTML code above:
+-add php:
+insert.php, referenced in HTML:
 
 <?php
 
@@ -118,13 +109,13 @@ $conn->close();
 
 echo "<p>Return to the cataloging page: <a href='http://11.111.111.111/cataloging/'>http://11.111.111.111/cataloging/</a></p>";
 ?>
-Security
-Since our HTML and PHP files allow us to enter data into our MySQL database from a simple web interface, we need to limit access to the module. Again, in a real-world situation, modules like these would have a variety of security measures in place to prevent wrongful data entry. In our case, we will rely on a simple authorization mechanism provided by the Apache2 server called htpasswd.
 
-First, we create an authentication file in our /etc/apache2 directory, which is where the Apache2 web server stores its configuration files. The file will contain a hashed password and a username we give it. In the following command to set the password, I set the username to libcat, but it could be anything:
+-Security
+Apache2 server uses password protection called htpasswd.
 
+-create a hashed password and username. username will be libcat for this purpose:
 sudo htpasswd -c /etc/apache2/.htpasswd libcat
-Next we need to tell the Apache2 web server that we will use the htpasswd to control access to our cataloging module. To do that, we use nano to open the apache2.conf file. We need
+"Next we need to tell the Apache2 web server that we will use the htpasswd to control access to our cataloging module. To do that, we use nano to open the apache2.conf file. We need
 
 sudo nano /etc/apache2/apache2.conf
 In the apache2.conf file, look for the following code block / stanza. We are interested in the third line in the stanza, which is line 172 for me, and probably is for you, too.
@@ -163,35 +154,16 @@ The Apache2 web server has a user account on your Linux server. The account name
 
 grep "www-data" /etc/passwd
 www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
-From the output, we can see that the www-apache user's home directory is /var/www and its default shell is /usr/sbin/nologin. See man nologin for details, but in short, the nologin prevents the www-data account to be able to login to a shell.
+From the output, we can see that the www-apache user's home directory is /var/www and its default shell is /usr/sbin/nologin. See man nologin for details, but in short, the nologin prevents the www-data account to be able to login to a shell."
 
-You can compare the output of the above grep command with your account information that is stored in /etc/passwd. Use the following command: grep $USER /etc/passwd to do so. You'll see, for example, that your home directory is listed there as well as your default shell, which is bash.
+-usegrep $USER /etc/passwd to see root user's default password access set to bash
 
-The benefit with having Apache2 a user is that we can limit file permissions and ownership to this user.
-
-The general guidelines for this are as follows:
-
-Static files (like HTML, CSS, JS) might not need to be writable by the Apache server, so they could be owned by a different user (like your own user account) but be readable by www-data.
-Directories where Apache needs to write data (like upload directories) or applications that need write access should be owned by www-data.
-Configuration files (incl. files like login.php) should be readable by www-data but not writable, to prevent unauthorized modifications.
-We can initiate this guidelines with the chown and chmod commands:
-
-Change the group ownership of /var/www/html to www-data:
-
- sudo chown :www-data /var/www/html
+-limit file permissions for the libcat user:
+"Change the group ownership of /var/www/html to www-data:
+sudo chown :www-data /var/www/html
 Set the setgid bit on /var/www/html. This command makes it so that any new files and directories created within /var/www/html will inherit the group ownership of the parent directory (www-data, in this case). While this ensures that group ownership is inherited, the user ownership of new files will still be the user that creates the files. In our case, since we use sudo to work in this directory, that means that the user owner for subsequent files and directories will be the Linux root user.
 
- sudo chmod -R g+s /var/www/html
-Get Cataloging!
-Now visit your cataloging module. You should be required to enter the username and password that you created with htpasswd.
-
-Conclusion
-In the last lesson, we created a very bare bones OPAC that would allow patrons to search our catalog. In this lesson, we learned how to create a bare bones cataloging module that would allow librarians to add bibliographic data and records to the OPAC.
-
-Now try this:
-
-Add some records using the above form, and then return to your OPAC and conduct some queries to confirm that the new records have been added.
-Use the MySQL command line interface to view the new records, just like we did a couple of lessons ago.
-In a production level environment, we would add quite a bit more functionality and security. Our MySQL database would contain many more tables that allow storing data related to the modules listed above. We would also like to make our modules graphically attractive and provide more content. That would mean we would add Cascading Style Sheets (CSS) and JavaScript to create an attractive and usable interface. But that would be a whole other class.
+sudo chmod -R g+s /var/www/html"
+Now time to add entries to the catalog module
 
 
