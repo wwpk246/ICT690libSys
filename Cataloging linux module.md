@@ -111,42 +111,41 @@ echo "<p>Return to the cataloging page: <a href='http://11.111.111.111/catalogin
 ?>
 
 -Security
-Apache2 server uses password protection called htpasswd.
-
--create a hashed password and username. username will be libcat for this purpose:
+Apache2 server uses password protection called htpasswd.  Create user and pw for access:
+-create password and username. username will be libcat for this purpose:
 sudo htpasswd -c /etc/apache2/.htpasswd libcat
-"Next we need to tell the Apache2 web server that we will use the htpasswd to control access to our cataloging module. To do that, we use nano to open the apache2.conf file. We need
-
+-make apache aware of using this method:
 sudo nano /etc/apache2/apache2.conf
-In the apache2.conf file, look for the following code block / stanza. We are interested in the third line in the stanza, which is line 172 for me, and probably is for you, too.
 
+-In the apache2.conf file, look for the following code block / stanza
 <Directory /var/www/>
   Options Indexes FollowSymLinks
   AllowOverride None
   Require all granted
 </Directory>
-Carefully, we need to change the word None to the word All:
+
+-change "None" to the word "All":
 
 <Directory /var/www/>
   Options Indexes FollowSymLinks
   AllowOverride All
   Require all granted
 </Directory>
-Next, change to the cataloging directory and use nano to create a file called .htaccess (note the leading period):
 
+-"Next, change to the cataloging directory and use nano to create a file called ".htaccess":"
 cd /var/www/html/cataloging
 sudo nano .htaccess
-Add the following content to .htaccess:
 
+-Input code:
 AuthType Basic
 AuthName "Authorization Required"
 AuthUserFile /etc/apache2/.htpasswd
 Require valid-user
-Check that the configuration file is okay:
 
+-Check for validation:
 apachectl configtest
-If you get a Syntax OK message, then restart Apache2 and check its status:
 
+-Syntax OK then restart apache:
 sudo systemctl restart apache2
 systemctl status apache2
 Permissions and Ownership
