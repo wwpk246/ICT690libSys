@@ -36,5 +36,7 @@ index.html.original  latest.tar.gz  omeka           search.php
 7. willw@wwubuntu-1:/var/www/html/omeka$ sudo nano db.ini
 8. revisit #4 above ^
 9. after finishing step #4 above restart apache and mysql:
+
 ```sudo systemctl restart apache2```
+
 ```sudo systemctl restart mysqld```
