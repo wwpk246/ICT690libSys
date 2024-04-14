@@ -13,6 +13,7 @@ For TCP ports, add 8080
 -sudo apt update / upgrade
 
 **Next was updating repository for Koha and Koha installation, installation of MYSQL**
+
 sudo su
 echo 'deb http://debian.koha-community.org/koha stable main' | sudo tee /etc/apt/sources.list.d/koha.list
 wget -q -O- https://debian.koha-community.org/koha/gpg.asc | sudo apt-key add -
