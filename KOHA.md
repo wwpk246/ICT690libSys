@@ -1,11 +1,19 @@
 **-NEW VM MACHINE**
 Series= E2
-Machine Type= 2 vCPU, 4 GB memory, Ubuntu 20.04
+
+Machine Type= 2 vCPU, 
+
+4 GB memory, 
+
+Ubuntu 20.04
 
 **-VPC NETWORKS->FIREWALLS**
 create firewall _rule_
+
 name= koha
+
 port= 8080
+
 For TCP ports, add 8080
 
 
