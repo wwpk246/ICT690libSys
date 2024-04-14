@@ -33,7 +33,9 @@ systemctl restart apache2
 
 **CREATE DB FOR KOHA**
 koha-create --create-db bibliolib
+
 nano /etc/apache2/ports.conf -> "add" Listen 8080
+
 //check config -> apachectl configtest
 
 
