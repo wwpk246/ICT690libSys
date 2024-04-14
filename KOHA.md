@@ -47,6 +47,17 @@ nano /etc/apache2/ports.conf -> "add" Listen 8080
 //check config -> apachectl configtest
 
 
+**KOHA WEB INSTALLER**
+
+nano /etc/koha/sites/bibliolib/koha-conf.xml -> Need the section titled "config" for user/pw
+
+http://35.229.66.146:8080 -> KOHA WEB INSTALLER login/setup page
+
+EDIT OPACBaseURL in KohaAdministration.  Search OPACBaseURL in top bar and edit the field to server URL = http://35.229.66.146
+
+Create newPatrons
+Create newCatalogEntries
+
 
 
 
